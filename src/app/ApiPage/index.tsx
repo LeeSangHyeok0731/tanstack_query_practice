@@ -11,10 +11,12 @@ type ApiData = {
 };
 
 const DataResponse = styled.div`
-  width: 300px;
-  height: 50px;
+  width: 100%;
+  height: 200px;
   background-color: gray;
-  padding: 5px 0 5px 0;
+  margin: 5px 0 5px 0;
+  display: flex;
+  flex-direction: column;
 `;
 
 export default function API() {
