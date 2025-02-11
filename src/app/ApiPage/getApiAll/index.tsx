@@ -20,13 +20,22 @@ const DataResponse = styled.div`
 `;
 
 export default function API() {
-  const { data, isLoading, error } = useGetApi();
+  const { data, isLoading, error, refetch } = useGetApi();
 
   if (isLoading) return <>데이터 불러오는중....</>;
   if (error) return <>데이터 불러오기 실패 ㅠㅠ</>;
 
   return (
     <div>
+      <button
+        onClick={() => {
+          refetch();
+          console.log("새 데이터 불러오기");
+        }}
+      >
+        새로운 데이터 불러오기
+      </button>
+      <br />
       {data && <p> api 불러오기 성공!</p>}
       <br />
       {data.map((x: ApiData, index: number) => {
