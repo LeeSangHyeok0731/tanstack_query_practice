@@ -1,4 +1,4 @@
-import API from "./ApiPage";
+import API from "./ApiPage/getApiAll";
 
 export default function Home() {
   return (

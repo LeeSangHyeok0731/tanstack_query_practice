@@ -1,7 +1,7 @@
 "use client";
 
 import styled from "styled-components";
-import useGetApi from "../hook/useGetApi";
+import useGetApi from "../../hook/useGetApi";
 
 type ApiData = {
   id: number;
