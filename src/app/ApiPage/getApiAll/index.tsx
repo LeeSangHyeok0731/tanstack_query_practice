@@ -10,7 +10,7 @@ type ApiData = {
   userId: string;
 };
 
-const DataResponse = styled.div`
+export const DataResponse = styled.div`
   width: 100%;
   height: 200px;
   background-color: rgba(211, 211, 211, 1);
