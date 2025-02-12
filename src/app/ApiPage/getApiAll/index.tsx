@@ -3,11 +3,11 @@
 import styled from "styled-components";
 import useGetApi from "../../hook/useGetApi";
 
-type ApiData = {
-  id: number;
+export type ApiData = {
+  id?: number;
   title: string;
   body: string;
-  userId: string;
+  userId: number;
 };
 
 export const DataResponse = styled.div`

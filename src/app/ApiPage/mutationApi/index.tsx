@@ -2,18 +2,14 @@
 
 import { useMutation } from "@tanstack/react-query";
 import { useState } from "react";
-import { DataResponse } from "../getApiAll";
+import { ApiData, DataResponse } from "../getApiAll";
 
 export default function Mutation() {
-  const [data, setData] = useState<{
-    title?: string;
-    body?: string;
-    userId?: number;
-  }>({});
-
   const [Title, setTitle] = useState<string>("");
   const [Body, setBody] = useState<string>("");
   const [UserId, setUserId] = useState<number>(0);
+
+  const [ResponseData, setResponseData] = useState<ApiData[]>([]);
 
   const fetchData = async ({
     title,
@@ -37,9 +33,9 @@ export default function Mutation() {
 
   const mutation = useMutation({
     mutationFn: fetchData,
-    onSuccess: (data) => {
+    onSuccess: (data: { title: string; body: string; userId: number }) => {
       console.log("성공:", data);
-      setData(data);
+      setResponseData((prev) => [...prev, data]);
     },
     onError: (error) => {
       console.error("오류:", error);
@@ -73,13 +69,15 @@ export default function Mutation() {
           onChange={(e) => setUserId(Number(e.target.value))}
         ></input>
       </form>
-      {data.title && (
-        <DataResponse key={data.userId}>
-          <h1>{data.title}</h1>
-          <p>{data.body}</p>
-          <p>{data.userId}</p>
-        </DataResponse>
-      )}
+      {ResponseData.map((x: ApiData) => {
+        return (
+          <DataResponse key={x.userId}>
+            <h1>{x.title}</h1>
+            <p>{x.body}</p>
+            <p>{x.userId}</p>
+          </DataResponse>
+        );
+      })}
     </div>
   );
 }
