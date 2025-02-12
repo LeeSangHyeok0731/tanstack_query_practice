@@ -11,6 +11,10 @@ export default function Mutation() {
     userId?: number;
   }>({});
 
+  const [Title, setTitle] = useState<string>("");
+  const [Body, setBody] = useState<string>("");
+  const [UserId, setUserId] = useState<number>(0);
+
   const fetchData = async ({
     title,
     body,
@@ -47,15 +51,29 @@ export default function Mutation() {
       <button
         onClick={() =>
           mutation.mutate({
-            title: "이상혁",
-            body: "안녕하세요",
-            userId: 1412,
+            title: Title,
+            body: Body,
+            userId: UserId,
           })
         }
       >
         새로은 글 만들기
       </button>
-      {data && (
+      <form>
+        <input
+          placeholder="title"
+          onChange={(e) => setTitle(e.target.value)}
+        ></input>
+        <input
+          placeholder="body"
+          onChange={(e) => setBody(e.target.value)}
+        ></input>
+        <input
+          placeholder="userId"
+          onChange={(e) => setUserId(Number(e.target.value))}
+        ></input>
+      </form>
+      {data.title && (
         <DataResponse key={data.userId}>
           <h1>{data.title}</h1>
           <p>{data.body}</p>
