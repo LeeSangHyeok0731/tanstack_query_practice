@@ -69,9 +69,9 @@ export default function Mutation() {
           onChange={(e) => setUserId(Number(e.target.value))}
         ></input>
       </form>
-      {ResponseData.map((x: ApiData) => {
+      {ResponseData.map((x: ApiData, index: number) => {
         return (
-          <DataResponse key={x.userId}>
+          <DataResponse key={index}>
             <h1>{x.title}</h1>
             <p>{x.body}</p>
             <p>{x.userId}</p>
