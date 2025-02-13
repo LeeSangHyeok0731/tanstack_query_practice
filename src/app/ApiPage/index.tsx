@@ -2,7 +2,7 @@
 
 import styled from "styled-components";
 import { useMutation } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import useGetApi from "../hook/useGetApi";
 
 export type ApiData = {
@@ -15,14 +15,14 @@ export type ApiData = {
 export const DataResponse = styled.div`
   width: 100%;
   height: 200px;
-  background-color: gray;
+  background-color: rgba(211, 211, 211, 1);
   margin: 5px 0 5px 0;
   display: flex;
   flex-direction: column;
 `;
 
 export default function API() {
-  const { data, isLoading, error } = useGetApi();
+  const { data = [], isLoading, error } = useGetApi();
 
   const [Title, setTitle] = useState<string>("");
   const [Body, setBody] = useState<string>("");
@@ -63,9 +63,9 @@ export default function API() {
     },
   });
 
-  useEffect(() => {
-    setTotal(data.concat(ResponseData));
-  }, [ResponseData, data]);
+  const handleClick = () => {
+    setTotal([...ResponseData.reverse(), ...data]);
+  };
 
   if (isLoading) return <>데이터 불러오는중....</>;
   if (error) return <>데이터 불러오기 실패 ㅠㅠ</>;
@@ -100,6 +100,7 @@ export default function API() {
           ></input>
         </form>
       </div>
+      <button onClick={handleClick}>새로고침 하기</button>
       {total.map((x: ApiData, index: number) => {
         return (
           <DataResponse key={index}>
