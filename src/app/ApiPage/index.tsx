@@ -3,14 +3,14 @@
 import { useQuery } from "@tanstack/react-query";
 import styled from "styled-components";
 
-type ApiData = {
-  id: number;
+export type ApiData = {
+  id?: number;
   title: string;
   body: string;
-  userId: string;
+  userId: number;
 };
 
-const DataResponse = styled.div`
+export const DataResponse = styled.div`
   width: 100%;
   height: 200px;
   background-color: gray;
