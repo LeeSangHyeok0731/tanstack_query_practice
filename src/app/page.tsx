@@ -1,9 +1,5 @@
-<<<<<<< Updated upstream
 import API from "./ApiPage";
-=======
-import API from "./ApiPage/getApiAll";
-import Mutation from "./ApiPage/mutationApi";
->>>>>>> Stashed changes
+import Mutation from "./mutationApi";
 
 export default function Home() {
   return (
