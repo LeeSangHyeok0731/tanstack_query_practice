@@ -10,8 +10,8 @@ export default function useGetApi() {
   const { data, isLoading, error, refetch } = useQuery({
     queryKey: ["data"],
     queryFn: fetchData,
-    staleTime: 1000 * 60 * 0.5,
-    gcTime: 1000 * 60 * 5,
+    staleTime: 1000 * 60 * 0,
+    gcTime: 1000 * 60 * 0,
   });
 
   return { data, isLoading, error, refetch };
