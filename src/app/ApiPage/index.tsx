@@ -100,7 +100,7 @@ export default function API() {
           ></input>
         </form>
       </div>
-      <button onClick={handleClick}>새로고침 하기</button>
+      <button onClick={handleClick}>새 데이터 불러오기</button>
       {total.map((x: ApiData, index: number) => {
         return (
           <DataResponse key={index}>
