@@ -22,7 +22,7 @@ export const DataResponse = styled.div`
 `;
 
 export default function API() {
-  const { data = [], isLoading, error } = useGetApi();
+  const { data = [], isLoading, error, refetch } = useGetApi();
 
   const [Title, setTitle] = useState<string>("");
   const [Body, setBody] = useState<string>("");
@@ -64,6 +64,7 @@ export default function API() {
   });
 
   const handleClick = () => {
+    refetch();
     setTotal([...ResponseData.reverse(), ...data]);
   };
 
