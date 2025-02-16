@@ -56,6 +56,7 @@ export default function API() {
     mutationFn: fetchData,
     onSuccess: (data: { title: string; body: string; userId: number }) => {
       console.log("성공:", data);
+      refetch();
       setResponseData((prev) => [...prev, data]);
     },
     onError: (error) => {
